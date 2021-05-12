@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 .App {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #0c1427;
   text-align: center;
+
+  --nav-bar-width: 247px;
+  --transform: transform 0.2s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .App-logo {
