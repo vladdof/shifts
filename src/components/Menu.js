@@ -54,11 +54,11 @@ const icon_names = {
 };
 
 const Menu = (props) => (
-    <MenuList id="menu">
+    <MenuList id='menu'>
         {
             props.links.map((item, index) => (
                 <li key={index}>
-                    <svg width="20" height="20">
+                    <svg width='20' height='20'>
                         <use key={index} xlinkHref={`${sprite}${icon_names[index]}`}></use>
                     </svg>
                     <a href='#'>{item}</a>

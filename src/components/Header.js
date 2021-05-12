@@ -2,8 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Menu from './Menu';
+import Avatar from './Avatar';
 
 const HeaderElement = styled.header`
+    display: flex;
+    flex-direction: column;
     background: #e8eaf0;
 
     @media (min-width: 1024px) {
@@ -14,6 +17,7 @@ const HeaderElement = styled.header`
         flex-direction: column;
         width: var(--nav-bar-width);
         overflow: visible;
+        position: fixed;
     }
 `;
 
@@ -43,6 +47,8 @@ const Header = () => (
             </button>
             <Menu links={links} />
         </nav>
+
+        <Avatar />
     </HeaderElement>
 );
 
