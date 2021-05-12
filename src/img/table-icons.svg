@@ -1,0 +1,9 @@
+<svg width="0" height="0" class="hidden">
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" id="fi_clock">
+    <path d="M9 16.5a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" stroke="#0C1427" stroke-opacity=".25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M9 4.5V9l3 1.5" stroke="#0C1427" stroke-opacity=".25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" id="u_user-check">
+    <path d="M11.083 10.183a4.1 4.1 0 001.417-3.1 4.167 4.167 0 00-8.333 0 4.1 4.1 0 001.416 3.1 6.667 6.667 0 00-3.916 6.067.833.833 0 101.666 0 5 5 0 1110 0 .833.833 0 101.667 0 6.667 6.667 0 00-3.917-6.067zm-2.75-.6a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm9.759-1.975a.834.834 0 00-1.184 0l-1.666 1.667-.517-.525a.833.833 0 10-1.183 1.175l1.116 1.117a.834.834 0 001.175 0l2.225-2.225a.833.833 0 00.034-1.209z" fill="#0C1427"></path>
+  </symbol>
+</svg>
