@@ -31,6 +31,11 @@ const TbodyElement = styled.tbody`
         box-sizing: border-box;
         box-shadow: 0px 2px 2px rgba(12, 20, 39, 0.1);
         border-radius: 20px;
+        transition: box-shadow 0.2s ease;
+
+        &:hover {
+            box-shadow: 0px 2px 28px rgba(12, 20, 39, 0.10);
+        }
     }
 
     td {
