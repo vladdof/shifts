@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import TitleTable from './TitleTable';
 import Table from './Table';
+import Select from './Select';
 
 const ContentElement = styled.main`
     display: grid;
@@ -14,11 +15,28 @@ const ContentElement = styled.main`
     text-align: left;
     background-color: var(--post-bg);
     transition: var(--transition-all);
+
+    @media (min-width: 768px) {
+        padding: calc(50px + 12px) 30px 10px;
+    }
+
+    @media (min-width: 992px) {
+        padding: 120px 60px 10px;
+    }
+`;
+
+const SelectWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `;
 
 const Content = () => (
     <ContentElement>
-        <TitleTable />
+        <SelectWrapper>
+            <TitleTable />
+            <Select />
+        </SelectWrapper>
         <Table />
     </ContentElement>
 );
