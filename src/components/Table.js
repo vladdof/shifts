@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import icons from '../img/table-icons.svg';
-import FetchData from '../service/FetchData';
+import { getHeadersTable, getRowsTable } from '../service/FetchData';
 
 const TableElement = styled.table`
     border-spacing: 10px;
@@ -41,9 +41,8 @@ const TheadElement = styled.thead`
 
 const TbodyElement = styled.tbody`
     tr {
-        border: 1px solid rgba(12, 20, 39, 0.05);
         box-sizing: border-box;
-        box-shadow: 0px 2px 2px rgba(12, 20, 39, 0.1);
+        box-shadow: 0 0 1px rgba(12, 20, 39, 0.1), 0 2px 2px rgba(12, 20, 39, 0.1);
         border-radius: 20px;
         transition: box-shadow 0.2s ease;
 
@@ -116,8 +115,8 @@ const TbodyElement = styled.tbody`
 
 `;
 
-const headers = FetchData().getHeadersTable();
-const rows = FetchData().getRowsTable();
+const headers = getHeadersTable();
+const rows = getRowsTable();
 
 const setDataLabel = (index) => headers[index];
 

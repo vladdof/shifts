@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import MultiSelect from 'react-multi-select-component';
-import styled, { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
+
+import  { getMonthsYear } from '../service/FetchData';
 
 const GlobalStyle = createGlobalStyle`
     .multi-select {
@@ -23,24 +25,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Select = () => {
-    const getDate = () => {
-        return new Date().getFullYear();
-    };
-
-    const options = [
-        { label: `January, ${getDate()}`, value: `january` },
-        { label: `February, ${getDate()}`, value: `february` },
-        { label: `March, ${getDate()}`, value: `march` },
-        { label: `April, ${getDate()}`, value: `april` },
-        { label: `May, ${getDate()}`, value: `may` },
-        { label: `June, ${getDate()}`, value: `june` },
-        { label: `July, ${getDate()}`, value: `july` },
-        { label: `August, ${getDate()}`, value: `august` },
-        { label: `September, ${getDate()}`, value: `september` },
-        { label: `October, ${getDate()}`, value: `october` },
-        { label: `November, ${getDate()}`, value: `november` },
-        { label: `December, ${getDate()}`, value: `december` }
-    ];
+    const options = getMonthsYear();
 
     const [selected, setSelected] = useState([]);
 
