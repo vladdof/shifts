@@ -64,3 +64,24 @@ button {
 button {
   -webkit-appearance: button;
 }
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #8697a8 #e8eaf0;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  background-color: #e8eaf0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #8697a8;
+  border-radius: 2.5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #8697a8;
+}
