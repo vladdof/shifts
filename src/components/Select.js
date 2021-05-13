@@ -4,14 +4,21 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     .multi-select {
-        max-width: 165px;
         width: 100%;
+
+        @media (min-width: 768px) {
+            max-width: 165px;
+        }
+
+        @media (max-width: 767.98px) {
+            max-width: 136px;
+        }
     }
 
     .rmsc {
         --rmsc-border: #dedfe2;
         --rmsc-radius: 6px;
-        --rmsc-h: 44px;
+        --rmsc-h: 42px;
     }
 `;
 

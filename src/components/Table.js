@@ -2,26 +2,40 @@ import React from 'react';
 import styled from 'styled-components';
 
 import icons from '../img/table-icons.svg';
+import FetchData from '../service/FetchData';
 
 const TableElement = styled.table`
-    border-collapse: separate;
     border-spacing: 10px;
     text-align: left;
-    max-width: 1096px;
+    max-width: var(--max-width);
+
+    @media (min-width: 768px) {
+        border-collapse: separate;
+    }
 `;
 
 const TheadElement = styled.thead`
-    color: #8697a8;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 12px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
+    @media (min-width: 768px) {
+        color: #8697a8;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
 
-    th {
-        &:first-child {
-            padding-left: 10px;
+        th {
+            &:first-child {
+                padding-left: 10px;
+            }
         }
+    }
+
+    @media (max-width: 768px) {
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        position: absolute;
+        overflow: hidden;
     }
 `;
 
@@ -36,62 +50,74 @@ const TbodyElement = styled.tbody`
         &:hover {
             box-shadow: 0px 2px 28px rgba(12, 20, 39, 0.10);
         }
+
+        @media (max-width: 767.97px) {
+            display: block;
+
+            &:not(:last-child) {
+                margin-bottom: 16px;
+            }
+        }
     }
 
     td {
         padding: 20px 0;
 
-        &:first-child {
-            padding-left: 10px;
+        @media (min-width: 768px) {
+            &:first-child {
+                padding-left: 10px;
+            }
+
+            span {
+                display: flex;
+                align-items: center;
+            }
+
+            svg {
+                display: block;
+                margin-right: 8px;
+            }
         }
 
-        span {
-            display: flex;
-            align-items: center;
-        }
+        @media (max-width: 767.97px) {
+            display: block;
+            padding: 7.5px 15px;
+            text-align: right;
 
-        svg {
-            margin-right: 8px;
+            &:first-child {
+                padding-top: 15px;
+            }
+
+            &:last-child {
+                padding-bottom: 15px;
+            }
+
+            &:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 18px;
+                letter-spacing: 0.03em;
+                text-transform: uppercase;
+                color: #8697a8;
+            }
+
+            span {
+                font-size: 14px;
+                line-height: 17px;
+            }
+
+            svg {
+                display: none;
+            }
         }
     }
 
 `;
 
-const headers = ['Date', 'Shift type', 'Period', 'Hours', 'Salary (gross)', 'Bonus (gross)'];
-const rows = [
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-    ['January 06, 2020', 'Afternoon', '15:00 - 23:00', '8h', '$1,630', '30'],
-];
+const headers = FetchData().getHeadersTable();
+const rows = FetchData().getRowsTable();
 
 const setDataLabel = (index) => headers[index];
 

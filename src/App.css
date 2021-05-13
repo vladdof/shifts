@@ -4,18 +4,31 @@
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
   color: #0c1427;
   text-align: center;
 
   --nav-bar-width: 247px;
+  --max-width: 1096px;
   --transform: transform 0.2s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .App {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .App {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
