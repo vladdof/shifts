@@ -20,7 +20,7 @@ const MenuList = styled.ul`
             left: -12px;
             top: -12px;
             bottom: -12px;
-            background: #fff;
+            background-color: #fff;
             border-radius: 8px;
             transition: 0.3s linear;
             --size: 0;
@@ -64,6 +64,12 @@ const MenuList = styled.ul`
         visibility: ${props => !props.openMenu ? 'hidden' : 'visible'};
         transition: all .3s ease;
         z-index: 100;
+
+        li {
+            &:before {
+                background-color: rgb(0 0 0 / 8%);
+            }
+        }
     }
 
     @media (max-width: 568px) {

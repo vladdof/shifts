@@ -7,7 +7,8 @@ import { getHeadersTable, getRowsTable } from '../service/FetchData';
 const TableElement = styled.table`
     border-spacing: 10px;
     text-align: left;
-    max-width: var(--max-width);
+    max-width: var(--max-width, 1096px);
+    width: 100%;
 
     @media (min-width: 768px) {
         border-collapse: separate;

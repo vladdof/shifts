@@ -27,6 +27,7 @@ const HeaderElement = styled.header`
         top: 0;
         left: 0;
         background-color: #1d1e22;
+        overflow: hidden;
     }
 `;
 
@@ -55,7 +56,7 @@ const Header = () => {
                     <Menu openMenu={openMenu} links={links} />
                 </nav>
 
-                <Avatar />
+                <Avatar openMenu={openMenu} />
             </HeaderElement>
         </>
     );
