@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const Button = styled.button`
     margin-right: 100%;
@@ -21,6 +21,7 @@ const Button = styled.button`
         height: 3px;
         margin: auto;
         background-color: #fff;
+        border-radius: 1px;
         outline: 1px solid transparent;
         position: relative;
         user-select: none;
@@ -33,6 +34,7 @@ const Button = styled.button`
             width: 100%;
             height: 100%;
             background-color: #fff;
+            border-radius: 1px;
             position: absolute;
             left: 0;
             z-index: 1;
@@ -62,45 +64,32 @@ const Button = styled.button`
     }
 `;
 
-export default class Burger extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            class: false
-        }
-        this.handleClick = this.handleClick.bind(this);
-        this.setClass = this.setClass.bind(this);
+const Burger = (props) => {
+    const [className, toggleClass] = useState(false);
+
+    const handleClick = () => {
+        toggleClass(!className);
+        props.toggleMenu();
     }
 
-    handleClick = () => {
-        this.setState({
-            class: !this.state.class
-        })
-        this.setClass();
-    }
-
-    setClass = () => {
-        if (this.state.class === true) {
+    const setClass = () => {
+        if (className === true) {
             return 'clicked';
         }
     }
 
-    render() {
-        const { itemSize } = this.state;
-        const { items } = this.props;
+    return (
+        <Button
+            type='button'
+            aria-expanded={props.openMenu}
+            aria-controls='nemu'
+            as='button'
+            onClick={() => handleClick()}
+            className={setClass()}
+        >
+            <span></span>
+        </Button>
+    );
+};
 
-        return (
-                <Button
-                    type='button'
-                    aria-expanded='false'
-                    aria-controls='nemu'
-                    as='button'
-                    onClick={() => this.handleClick()}
-                    className={this.setClass()}
-
-                >
-                    <span></span>
-                </Button>
-        );
-    }
-}
+export default Burger;
