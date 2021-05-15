@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Menu from './Menu';
+import Burger from './BurgerMenu';
 import Avatar from './Avatar';
 
 const HeaderElement = styled.header`
-    display: flex;
-    flex-direction: column;
-    background: #e8eaf0;
+    grid-area: menu;
+    position: fixed;
+    z-index: 100;
 
-    @media (min-width: 1024px) {
-        padding: 45px 0 0;
+    @media (min-width: 992.08px) {
         min-height: 100vh;
-        box-shadow: 0 0 16px rgba(0,0,0,.08);
+        padding: 45px 0 0;
         display: flex;
         flex-direction: column;
         width: var(--nav-bar-width);
+        background-color: #e8eaf0;
+        box-shadow: 0 0 16px rgba(0,0,0,.08);
         overflow: visible;
-        position: fixed;
+    }
+
+    @media (max-width: 992px) {
+        width: 100%;
+        padding: 3px 0;
+        top: 0;
+        left: 0;
+        background-color: #1d1e22;
     }
 `;
 
@@ -30,26 +39,26 @@ const links = [
     'Action Tracking'
 ];
 
+const Header = () => {
+    const [openMenu, toggleMenu] = useState(false);
 
-const Header = () => (
-    <HeaderElement>
-        <div className="" as="button" onClick={() => alert('It works!')}>
-            <span className="icon">
-            </span>
-        </div>
+    return (
+        <>
+            <HeaderElement>
+                <div as="button">
+                    <span className="icon">
+                    </span>
+                </div>
 
-        <nav>
-            <button className="menu__button" type="button" aria-expanded="false" aria-controls="nemu">
-                <svg className="menu__icon" aria-hidden="true" width="32" height="32">
-                    <use className="menu__icon-menu" href="images/sprite.svg#menu"></use>
-                    <use className="menu__icon-close" href="images/sprite.svg#close"></use>
-                </svg>
-            </button>
-            <Menu links={links} />
-        </nav>
+                <nav>
+                    <Burger openMenu={openMenu} toggleMenu={() => toggleMenu(!openMenu)} />
+                    <Menu openMenu={openMenu} links={links} />
+                </nav>
 
-        <Avatar />
-    </HeaderElement>
-);
+                <Avatar />
+            </HeaderElement>
+        </>
+    );
+};
 
 export default Header;

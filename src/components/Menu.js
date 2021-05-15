@@ -4,10 +4,7 @@ import styled from 'styled-components';
 import sprite from '../img/menu-icons.svg'
 
 const MenuList = styled.ul`
-    margin-left: 36px;
     display: grid;
-    justify-content: flex-start;
-    row-gap: 30px;
 
     li {
         display: flex;
@@ -25,12 +22,13 @@ const MenuList = styled.ul`
             bottom: -12px;
             background: #fff;
             border-radius: 8px;
-            transform: translateX(-1000px);
-            transition: var(--transform);
+            transition: 0.3s linear;
+            --size: 0;
+            clip-path: circle(var(--size) at left center);
         }
 
         &:hover:before {
-            transform: translateX(0);
+            --size: 300px;
         }
 
         * {
@@ -40,6 +38,36 @@ const MenuList = styled.ul`
 
     svg {
         margin-right: 16px;
+    }
+
+    @media (min-width: 992.08px) {
+        row-gap: 30px;
+        padding-left: 36px;
+    }
+
+    @media (max-width: 992px) {
+        position: fixed;
+        right: auto;
+        top: 56px;
+        row-gap: 25px;
+        align-content: baseline;
+        justify-content: flex-start;
+        max-width: 300px;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding-left: 30px;
+        padding-top: 117px;
+        background-color: #fff;
+        box-shadow: 0 0 16px rgb(0 0 0 / 8%);
+        left: ${props => !props.openMenu ? '-300px' : '0'};
+        visibility: ${props => !props.openMenu ? 'hidden' : 'visible'};
+        transition: all .3s ease;
+        z-index: 100;
+    }
+
+    @media (max-width: 568px) {
+        max-width: 100%;
     }
 `;
 
@@ -54,7 +82,7 @@ const icon_names = {
 };
 
 const Menu = (props) => (
-    <MenuList id='menu'>
+    <MenuList openMenu={props.openMenu} id='menu'>
         {
             props.links.map((item, index) => (
                 <li key={index}>

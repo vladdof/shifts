@@ -17,7 +17,7 @@ const ContentElement = styled.main`
 
     @media (min-width: 768px) {
         gap: 20px;
-        padding: 60px 30px 10px;
+        padding: 80px 30px 10px;
     }
 
     @media (min-width: 992px) {
