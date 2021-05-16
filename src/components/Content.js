@@ -4,12 +4,16 @@ import styled from 'styled-components';
 import TitleTable from './TitleTable';
 import Table from './Table';
 import Select from './Select';
+import Login from './Login';
+import BackButton from './BackButton';
 
 const ContentElement = styled.main`
+    --padding-side: 15px;
+    --padding-top: 70px;
     display: grid;
     grid-area: content;
     min-height: 100vh;
-    padding: 70px 15px 10px;
+    padding: var(--padding-top) var(--padding-side) 10px;
     position: relative;
     text-align: left;
     background-color: var(--post-bg);
@@ -17,11 +21,16 @@ const ContentElement = styled.main`
 
     @media (min-width: 768px) {
         gap: 20px;
-        padding: 80px 30px 10px;
+        --padding-top: 80px;
+        --padding-side: 30px;
     }
 
     @media (min-width: 992px) {
-        padding: 120px 60px 10px;
+        --padding-top: 44px;
+    }
+
+    @media (min-width: 1200px) {
+        --padding-side: 60px;
     }
 
     @media (max-width: 767.98px) {
@@ -44,8 +53,25 @@ const SelectWrapper = styled.div`
     }
 `;
 
+const ButtonWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (min-width: 992px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+`;
+
 const Content = () => (
     <ContentElement>
+        <ButtonWrapper>
+            <BackButton />
+            <Login name='Sign out' />
+        </ButtonWrapper>
         <SelectWrapper>
             <TitleTable />
             <Select />

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Menu from './Menu';
 import Burger from './BurgerMenu';
 import Avatar from './Avatar';
+// import Login from './Login';
 
 const HeaderElement = styled.header`
     grid-area: menu;
@@ -57,6 +58,9 @@ const Header = () => {
                 </nav>
 
                 <Avatar openMenu={openMenu} />
+                {/* <div>
+                    <Login name='Sign out' />
+                </div> */}
             </HeaderElement>
         </>
     );
