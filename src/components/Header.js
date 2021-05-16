@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Menu from './Menu';
 import Burger from './BurgerMenu';
 import Avatar from './Avatar';
-// import Login from './Login';
+import Login from './Login';
+import { getLinksMenu } from '../service/FetchData';
 
 const HeaderElement = styled.header`
     grid-area: menu;
@@ -32,35 +33,55 @@ const HeaderElement = styled.header`
     }
 `;
 
-const links = [
-    'My Dashboard',
-    'People',
-    'Operations',
-    'Schedule Planning',
-    'Administration',
-    'Action Tracking'
-];
+const AvatarLoginWrapper = styled.div`
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 992px) {
+        position: fixed;
+        top: calc(56px + 30px);
+        left: ${props => !props.openMenu ? '-300px' : '30px'};
+        z-index: 100;
+        transition: left .4s ease;
+    }
+`;
+
+const links = getLinksMenu();
 
 const Header = () => {
     const [openMenu, toggleMenu] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const resizeWindow = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    useEffect(() => {
+        resizeWindow();
+        window.addEventListener('resize', resizeWindow);
+        return () => window.removeEventListener('resize', resizeWindow);
+    }, []);
+
+    const AvaLoginWrapper = () => {
+        if (windowWidth < 992) {
+            return (
+                <AvatarLoginWrapper openMenu={openMenu}>
+                    <Avatar />
+                    <Login name='Sign out' />
+                </AvatarLoginWrapper>
+            )
+        }
+
+        return <Avatar />;
+    };
 
     return (
         <>
             <HeaderElement>
-                <div as="button">
-                    <span className="icon">
-                    </span>
-                </div>
-
                 <nav>
                     <Burger openMenu={openMenu} toggleMenu={() => toggleMenu(!openMenu)} />
                     <Menu openMenu={openMenu} links={links} />
                 </nav>
-
-                <Avatar openMenu={openMenu} />
-                {/* <div>
-                    <Login name='Sign out' />
-                </div> */}
+                <AvaLoginWrapper />
             </HeaderElement>
         </>
     );

@@ -49,6 +49,7 @@ const MenuList = styled.ul`
         position: fixed;
         right: auto;
         top: 56px;
+        left: ${props => !props.openMenu ? '-300px' : '0'};
         row-gap: 25px;
         align-content: baseline;
         justify-content: flex-start;
@@ -60,7 +61,6 @@ const MenuList = styled.ul`
         padding-top: 117px;
         background-color: #fff;
         box-shadow: 0 0 16px rgb(0 0 0 / 8%);
-        left: ${props => !props.openMenu ? '-300px' : '0'};
         visibility: ${props => !props.openMenu ? 'hidden' : 'visible'};
         transition: all .3s ease;
         z-index: 100;
