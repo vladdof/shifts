@@ -54,4 +54,13 @@ const getMonthsYear = () => [
     { label: `December, ${getDate()}`, value: `december` }
 ];
 
-export { getMonthsYear, getHeadersTable, getRowsTable };
+const getLinksMenu = () => [
+    'My Dashboard',
+    'People',
+    'Operations',
+    'Schedule Planning',
+    'Administration',
+    'Action Tracking'
+];
+
+export { getMonthsYear, getHeadersTable, getRowsTable, getLinksMenu };
