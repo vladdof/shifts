@@ -21,7 +21,7 @@ const MainElement = styled.div`
 `;
 
 const Main = (props) => (
-    <MainElement className={ props.className }>
+    <MainElement className={props.className}>
         <Header />
         <Content />
     </MainElement>

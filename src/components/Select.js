@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
 
         @media (min-width: 768px) {
             max-width: 165px;
+
+            .dropdown-heading {
+                cursor: pointer;
+            }
         }
 
         @media (max-width: 767.98px) {

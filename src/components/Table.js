@@ -7,7 +7,7 @@ import { getHeadersTable, getRowsTable } from '../service/FetchData';
 const TableElement = styled.table`
     border-spacing: 10px;
     text-align: left;
-    max-width: var(--max-width, 1096px);
+    max-width: var(--max-width, 100%);
     width: 100%;
 
     @media (min-width: 768px) {
@@ -18,13 +18,14 @@ const TableElement = styled.table`
 const TheadElement = styled.thead`
     @media (min-width: 768px) {
         color: #8697a8;
-        font-weight: 500;
         font-size: 10px;
         line-height: 12px;
         letter-spacing: 0.03em;
         text-transform: uppercase;
 
         th {
+            font-weight: 500;
+
             &:first-child {
                 padding-left: 10px;
             }
@@ -95,6 +96,7 @@ const TbodyElement = styled.tbody`
             &:before {
                 content: attr(data-label);
                 float: left;
+                font-family: 'Inter', sans-serif;
                 font-weight: 500;
                 font-size: 10px;
                 line-height: 18px;

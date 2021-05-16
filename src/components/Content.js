@@ -54,15 +54,16 @@ const SelectWrapper = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @media (min-width: 992px) {
+    @media (min-width: 992.08px) {
+        max-width: var(--max-width);
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 30px;
+    }
+
+    @media (max-width: 992px) {
+        display: none;
     }
 `;
 
